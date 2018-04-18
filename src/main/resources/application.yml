@@ -1,0 +1,8 @@
+logging:
+  level:
+    root: INFO
+    org.springframework.web: DEBUG
+
+starwars_uri: https://swapi.co
+starwars_endpoint: /api/people
+

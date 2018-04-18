@@ -1,0 +1,10 @@
+.springBeans
+/mvnw.cmd
+/gradlew
+/mvnw
+/gs-reactive-rest-service.iml
+/gradlew.bat
+/target/
+/.idea/
+/.mvn/
+/gradle/
