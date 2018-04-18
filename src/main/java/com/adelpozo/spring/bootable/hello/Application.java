@@ -3,26 +3,22 @@ package com.adelpozo.spring.bootable.hello;
 import com.adelpozo.spring.configuration.AppStarWarsWebClient;
 import com.adelpozo.spring.configuration.ApplicationConfig;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @ComponentScan("com.adelpozo.spring")
 public class Application {
 
-    @Autowired
-    private ApplicationConfig appConfig;
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class);
 
-	public static void main(String[] args) {
-		SpringApplication app = new SpringApplication(Application.class);
-		app.run();
-	}
-
-    public void run(String... args) throws Exception {
-        AppStarWarsWebClient gwc = new AppStarWarsWebClient(appConfig);
+        AppStarWarsWebClient gwc = new AppStarWarsWebClient();
         System.out.println(gwc.getResult());
     }
-
 
 }

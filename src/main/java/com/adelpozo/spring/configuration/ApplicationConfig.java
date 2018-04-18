@@ -1,7 +1,9 @@
 package com.adelpozo.spring.configuration;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
@@ -9,22 +11,25 @@ import org.springframework.context.annotation.Configuration;
 @ConfigurationProperties
 public class ApplicationConfig {
 
-    private String starwars_endpoint;
-    private String starwars_uri;
+    @Value("${starwars.uri}")
+    private String uri;
 
-    public String getStarwars_endpoint() {
-        return starwars_endpoint;
+    @Value("${starwars.endpoint}")
+    private String endpoint;
+
+    public String getUri() {
+        return uri;
     }
 
-    public void setStarwars_endpoint(String starwars_endpoint) {
-        this.starwars_endpoint = starwars_endpoint;
+    public void setUri(String uri) {
+        this.uri = uri;
     }
 
-    public String getStarwars_uri() {
-        return starwars_uri;
+    public String getEndpoint() {
+        return endpoint;
     }
 
-    public void setStarwars_uri(String starwars_uri) {
-        this.starwars_uri = starwars_uri;
+    public void setEndpoint(String endpoint) {
+        this.endpoint = endpoint;
     }
 }
