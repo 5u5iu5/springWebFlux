@@ -25,7 +25,7 @@ public class AppHandler {
         log.info("Start to consume from any API rest");
 
         //TODO: Start to consume from any API rest
-        log.info(client.getPeopleFromStarWars());
+        log.info(client.doCallPeopleFromStarWars());
 
         return ServerResponse.accepted().contentType(MediaType.TEXT_PLAIN)
                 .body(BodyInserters.fromObject("Starting to consume!"));
