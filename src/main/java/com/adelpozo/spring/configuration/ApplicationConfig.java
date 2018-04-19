@@ -8,13 +8,11 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @EnableConfigurationProperties
-@ConfigurationProperties
+@ConfigurationProperties(prefix = "starwars")
 public class ApplicationConfig {
 
-    @Value("${starwars.uri}")
     private String uri;
 
-    @Value("${starwars.endpoint}")
     private String endpoint;
 
     public String getUri() {
@@ -31,5 +29,13 @@ public class ApplicationConfig {
 
     public void setEndpoint(String endpoint) {
         this.endpoint = endpoint;
+    }
+
+    @Override
+    public String toString() {
+        return "ApplicationConfig{" +
+                "uri='" + uri + '\'' +
+                ", endpoint='" + endpoint + '\'' +
+                '}';
     }
 }

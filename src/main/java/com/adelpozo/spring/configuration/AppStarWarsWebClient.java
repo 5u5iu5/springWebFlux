@@ -17,7 +17,7 @@ public class AppStarWarsWebClient {
     public String getResult() {
         WebClient client = WebClient.create(appConfig.getUri());
         Mono<ClientResponse> result = getClientResponseMono(client);
-        return ">> result = " + result.flatMap(res -> res.bodyToMono(String.class)).block();
+        return ">> result = " + result.flatMap(res -> res.bodyToMono(String.class));
     }
 
     private Mono<ClientResponse> getClientResponseMono(WebClient client) {

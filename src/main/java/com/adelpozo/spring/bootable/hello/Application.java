@@ -16,9 +16,6 @@ public class Application {
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class);
-
-        AppStarWarsWebClient gwc = new AppStarWarsWebClient();
-        System.out.println(gwc.getResult());
     }
 
 }

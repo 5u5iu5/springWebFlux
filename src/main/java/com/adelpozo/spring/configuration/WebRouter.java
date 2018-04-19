@@ -22,6 +22,6 @@ public class WebRouter {
     public RouterFunction<ServerResponse> route(AppHandler appHandler) {
 
         return RouterFunctions
-                .route(POST("/start").and(accept(MediaType.APPLICATION_JSON)), appHandler::startToConsume);
+                .route(GET("/start").and(accept(MediaType.APPLICATION_JSON)), appHandler::startToConsume);
     }
 }
