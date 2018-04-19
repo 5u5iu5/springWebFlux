@@ -31,15 +31,14 @@ public class AppStarWarsWebClient {
                 .build();
     }
 
-    public String doCallPeopleFromStarWars() {
-        Mono<String> stringMono = webClient.get()
+    public Mono<String> doCallPeopleFromStarWars() {
+        return webClient.get()
                 .uri(appConfig.getEndpoint())
-                .retrieve()
-                .bodyToMono(String.class);
-
-        stringMono.subscribe(result -> this.result = result);
-
-        return result;
+                .exchange()
+                .flatMap(clientResponse -> {
+                    log.info("Status code returned: " + clientResponse.statusCode());
+                    return clientResponse.bodyToMono(String.class);
+                });
     }
 
     private ExchangeFilterFunction logRequest() {

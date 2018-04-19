@@ -25,10 +25,10 @@ public class AppHandler {
         log.info("Start to consume from any API rest");
 
         //TODO: Start to consume from any API rest
-        log.info(client.doCallPeopleFromStarWars());
+        Mono<String> stringMono = client.doCallPeopleFromStarWars();
 
-        return ServerResponse.accepted().contentType(MediaType.TEXT_PLAIN)
-                .body(BodyInserters.fromObject("Starting to consume!"));
+        return ServerResponse.accepted().contentType(MediaType.APPLICATION_JSON)
+                .body(BodyInserters.fromObject(stringMono));
     }
 
 }
