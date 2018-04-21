@@ -16,20 +16,21 @@ public class CategorizeService {
     @Autowired
     private KafkaPublisher kafkaPublisher;
 
-    public Flux<String> getPeopleFromStarWarsWorld() {
+    public Flux<People> getPeopleFromStarWarsWorld() {
         Flux<People> peopleFlux = starWarsClient.listPeopleFromStarWars();
-        Flux<String> resultMap = peopleFlux.map(people -> {
-            try {
-                if (people.getProperties() != null) {
-                    kafkaPublisher.publish(people.getProperties().getName().getDescription(), "jedis");
-                    return "Kafka publisher starting...";
-                } else
-                    return "No data to publish";
-            } catch (InterruptedException e) {
-               return "Several error from Kafka Publisher ";
-            }
-        });
+        peopleFlux.subscribe(p -> System.out.println(p.toString()));
+//        Flux<String> resultMap = peopleFlux.map(people -> {
+//            try {
+//                if (people.getProperties() != null) {
+//                    kafkaPublisher.publish(people.getProperties().getName().getDescription(), "jedis");
+//                    return "Kafka publisher starting...";
+//                } else
+//                    return "No data to publish";
+//            } catch (InterruptedException e) {
+//               return "Several error from Kafka Publisher ";
+//            }
+//        });
 
-        return resultMap;
+        return peopleFlux;
     }
 }

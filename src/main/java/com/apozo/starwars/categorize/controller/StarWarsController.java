@@ -21,7 +21,7 @@ public class StarWarsController {
     private static final Logger logger = LoggerFactory.getLogger(StarWarsController.class);
 
     @GetMapping("/start")
-    public Flux<String> start() {
+    public Flux<People> start() {
         return service.getPeopleFromStarWarsWorld();
     }
 
