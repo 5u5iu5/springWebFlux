@@ -1,5 +1,6 @@
 package com.apozo.starwars.categorize.controller;
 
+import com.apozo.starwars.categorize.service.CategorizeService;
 import com.apozo.starwars.categorize.webclient.AppStarWarsClient;
 import com.apozo.starwars.categorize.payload.People;
 import org.slf4j.Logger;
@@ -15,13 +16,13 @@ import reactor.core.publisher.Flux;
 public class StarWarsController {
 
     @Autowired
-    private AppStarWarsClient appStarWarsClient;
+    private CategorizeService service;
 
     private static final Logger logger = LoggerFactory.getLogger(StarWarsController.class);
 
     @GetMapping("/start")
-    public Flux<People> start() {
-        return appStarWarsClient.listPeopleFromStarWars();
+    public Flux<String> start() {
+        return service.getPeopleFromStarWarsWorld();
     }
 
     @ExceptionHandler(WebClientResponseException.class)
