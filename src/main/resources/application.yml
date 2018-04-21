@@ -7,3 +7,9 @@ starwars:
   uri: https://swapi.co
   endpoint: /api/people
 
+kafka:
+  host: localhost:9092
+  topics:
+    - 'jedis'
+    - 'siths'
+

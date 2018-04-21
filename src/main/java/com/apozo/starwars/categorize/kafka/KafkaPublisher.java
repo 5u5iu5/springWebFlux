@@ -1,5 +1,6 @@
 package com.apozo.starwars.categorize.kafka;
 
+import com.apozo.starwars.categorize.config.KafkaConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

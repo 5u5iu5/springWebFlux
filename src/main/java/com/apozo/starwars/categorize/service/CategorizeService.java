@@ -20,8 +20,8 @@ public class CategorizeService {
         Flux<People> peopleFlux = starWarsClient.listPeopleFromStarWars();
         Flux<String> resultMap = peopleFlux.map(people -> {
             try {
-                if (people != null) {
-                    kafkaPublisher.publish(people.getType(), "jedis");
+                if (people.getProperties() != null) {
+                    kafkaPublisher.publish(people.getProperties().getName().getDescription(), "jedis");
                     return "Kafka publisher starting...";
                 } else
                     return "No data to publish";
