@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 @Component
 public class KafkaPublisher {
 
-    public static Logger logger = LoggerFactory.getLogger(KafkaPublisher.class);
+    private static Logger logger = LoggerFactory.getLogger(KafkaPublisher.class);
 
     @Autowired
     private KafkaTemplate<String, String> template;
