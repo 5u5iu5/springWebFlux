@@ -4,6 +4,7 @@ import com.apozo.starwars.categorize.kafka.KafkaPublisher;
 import com.apozo.starwars.categorize.payload.ListPeople;
 import com.apozo.starwars.categorize.payload.People;
 import com.apozo.starwars.categorize.webclient.AppStarWarsClient;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.api.client.json.jackson.JacksonFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,24 +21,24 @@ public class CategorizeService {
     @Autowired
     private KafkaPublisher kafkaPublisher;
 
-    public Flux<String> getPeopleFromStarWarsWorld() {
-        Flux<String> peopleFlux = starWarsClient.listPeopleFromStarWars();
-        Flux<String> stringFlux = peopleFlux.doOnNext(p -> categorizeAndSendToKafka(stringToPojo(p)));
+    public Flux<ListPeople> getPeopleFromStarWarsWorld() {
+        Flux<ListPeople> peopleFlux = starWarsClient.listPeopleFromStarWars();
+        Flux<ListPeople> stringFlux = peopleFlux.doOnNext(p -> categorizeAndSendToKafka(p));
 
         return stringFlux;
     }
 
-    private ListPeople stringToPojo(String peopleFromString) {
-        JacksonFactory factory = new JacksonFactory();
-        ListPeople people = null;
-        try {
-            people = factory.fromString(peopleFromString,ListPeople.class);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return people;
-    }
+//    private ListPeople stringToPojo(String peopleFromString) {
+//        ObjectMapper mapper = new ObjectMapper();
+//        ListPeople people = null;
+//        try {
+//            people = mapper.readValue(peopleFromString, ListPeople.class);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//        return people;
+//    }
 
     private String categorizeAndSendToKafka(ListPeople p) {
         if (p != null) {

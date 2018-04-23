@@ -1,6 +1,7 @@
 package com.apozo.starwars.categorize.webclient;
 
 import com.apozo.starwars.categorize.config.ApplicationConfig;
+import com.apozo.starwars.categorize.payload.ListPeople;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,11 +35,11 @@ public class AppStarWarsClient {
     }
 
 
-    public Flux<String> listPeopleFromStarWars() {
+    public Flux<ListPeople> listPeopleFromStarWars() {
         return webClient.get()
                 .uri("/api/people/")
                 .exchange()
-                .flatMapMany(clientResponse -> clientResponse.bodyToFlux(String.class));
+                .flatMapMany(clientResponse -> clientResponse.bodyToFlux(ListPeople.class));
     }
 
 

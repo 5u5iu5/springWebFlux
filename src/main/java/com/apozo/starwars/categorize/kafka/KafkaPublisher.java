@@ -22,7 +22,7 @@ public class KafkaPublisher {
 
     public void publish(final String categorizeData, final String topic) throws InterruptedException {
         this.template.send(topic, categorizeData);
-        latch.await(60, TimeUnit.SECONDS);
+        //latch.await(60, TimeUnit.SECONDS);
         logger.info("All received");
     }
 
