@@ -1,6 +1,7 @@
 package com.apozo.starwars.categorize.service;
 
 import com.apozo.starwars.categorize.kafka.KafkaPublisher;
+import com.apozo.starwars.categorize.payload.ListPeople;
 import com.apozo.starwars.categorize.payload.People;
 import com.apozo.starwars.categorize.webclient.AppStarWarsClient;
 import com.google.api.client.json.jackson.JacksonFactory;
@@ -26,11 +27,11 @@ public class CategorizeService {
         return stringFlux;
     }
 
-    private People stringToPojo(String peopleFromString) {
+    private ListPeople stringToPojo(String peopleFromString) {
         JacksonFactory factory = new JacksonFactory();
-        People people = null;
+        ListPeople people = null;
         try {
-            people = factory.fromString(peopleFromString,People.class);
+            people = factory.fromString(peopleFromString,ListPeople.class);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -38,10 +39,10 @@ public class CategorizeService {
         return people;
     }
 
-    private String categorizeAndSendToKafka(People p) {
+    private String categorizeAndSendToKafka(ListPeople p) {
         if (p != null) {
             try {
-                kafkaPublisher.publish(p.getName(), "jedis");
+                kafkaPublisher.publish("mierda", "jedis");
                 return "Kafka Published";
             } catch (InterruptedException e) {
                 e.printStackTrace();
