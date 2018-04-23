@@ -16,7 +16,7 @@ public class KafkaPublisher {
     private static Logger logger = LoggerFactory.getLogger(KafkaPublisher.class);
 
     @Autowired
-    private KafkaTemplate<String, String> template;
+    private KafkaTemplate<Integer, String> template;
 
     private final CountDownLatch latch = new CountDownLatch(3);
 

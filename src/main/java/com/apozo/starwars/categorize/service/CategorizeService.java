@@ -23,24 +23,13 @@ public class CategorizeService {
 
     public Flux<ListPeople> getPeopleFromStarWarsWorld() {
         Flux<ListPeople> peopleFlux = starWarsClient.listPeopleFromStarWars();
-        Flux<ListPeople> stringFlux = peopleFlux.doOnNext(p -> categorizeAndSendToKafka(p));
+        Flux<ListPeople> listPeopleFlux = peopleFlux.doOnNext(p -> categorizeAndSendToKafka(p));
 
-        return stringFlux;
+        return listPeopleFlux;
     }
 
-//    private ListPeople stringToPojo(String peopleFromString) {
-//        ObjectMapper mapper = new ObjectMapper();
-//        ListPeople people = null;
-//        try {
-//            people = mapper.readValue(peopleFromString, ListPeople.class);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//
-//        return people;
-//    }
-
     private String categorizeAndSendToKafka(ListPeople p) {
+        p.toString();
         if (p != null) {
             try {
                 kafkaPublisher.publish("mierda", "jedis");

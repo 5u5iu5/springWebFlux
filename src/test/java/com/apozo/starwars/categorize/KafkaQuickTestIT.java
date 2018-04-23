@@ -35,7 +35,7 @@ public class KafkaQuickTestIT {
     @Test
     public void testAutoCommit() throws Exception {
         logger.info("Start auto");
-        ContainerProperties containerProps = new ContainerProperties("mkunrn8o-jedis", "mkunrn8o-siths");
+        ContainerProperties containerProps = new ContainerProperties("jedis", "siths");
         final CountDownLatch latch = new CountDownLatch(4);
         containerProps.setMessageListener(new MessageListener<Integer, String>() {
 
@@ -51,7 +51,7 @@ public class KafkaQuickTestIT {
         container.start();
         Thread.sleep(1000); // wait a bit for the container to start
         KafkaTemplate<Integer, String> template = createTemplate();
-        template.setDefaultTopic("mkunrn8o-jedis");
+        template.setDefaultTopic("jedis");
         template.sendDefault(0, "foo");
         template.sendDefault(2, "bar");
         template.sendDefault(0, "baz");
@@ -82,7 +82,7 @@ public class KafkaQuickTestIT {
 
     private Map<String, Object> consumerProps() {
         Map<String, Object> props = new HashMap<>();
-        props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "velomobile-01.srvs.cloudkafka.com:9094");
+        props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
         props.put(ConsumerConfig.GROUP_ID_CONFIG, "starwarspeople");
         props.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, true);
         props.put(ConsumerConfig.AUTO_COMMIT_INTERVAL_MS_CONFIG, "100");
@@ -94,7 +94,7 @@ public class KafkaQuickTestIT {
 
     private Map<String, Object> senderProps() {
         Map<String, Object> props = new HashMap<>();
-        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "velomobile.srvs.cloudkafka.com");
+        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
         props.put(ProducerConfig.RETRIES_CONFIG, 0);
         props.put(ProducerConfig.BATCH_SIZE_CONFIG, 16384);
         props.put(ProducerConfig.LINGER_MS_CONFIG, 1);

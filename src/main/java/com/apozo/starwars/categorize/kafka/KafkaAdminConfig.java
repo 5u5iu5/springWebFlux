@@ -50,13 +50,13 @@ public class KafkaAdminConfig {
         return new KafkaTemplate<Integer, String>(producerFactory());
     }
 
-    @Bean
-    public NewTopic jedis() {
-        return new NewTopic("jedis", 10, (short) 2);
-    }
-
-    @Bean
-    public NewTopic siths() {
-        return new NewTopic("siths", 10, (short) 2);
-    }
+//    @Bean
+//    public NewTopic jedis() {
+//        return new NewTopic("jedis", 10, (short) 2);
+//    }
+//
+//    @Bean
+//    public NewTopic siths() {
+//        return new NewTopic("siths", 10, (short) 2);
+//    }
 }

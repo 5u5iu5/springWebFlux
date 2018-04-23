@@ -486,4 +486,25 @@ public class People {
         this.hairColor = hairColor;
     }
 
+    @Override
+    public String toString() {
+        return "People{" +
+                "eyeColor='" + eyeColor + '\'' +
+                ", mass='" + mass + '\'' +
+                ", films=" + films +
+                ", species=" + species +
+                ", birthYear='" + birthYear + '\'' +
+                ", homeworld='" + homeworld + '\'' +
+                ", edited=" + edited +
+                ", starships=" + starships +
+                ", name='" + name + '\'' +
+                ", created=" + created +
+                ", gender='" + gender + '\'' +
+                ", url=" + url +
+                ", vehicles=" + vehicles +
+                ", skinColor='" + skinColor + '\'' +
+                ", height='" + height + '\'' +
+                ", hairColor='" + hairColor + '\'' +
+                '}';
+    }
 }

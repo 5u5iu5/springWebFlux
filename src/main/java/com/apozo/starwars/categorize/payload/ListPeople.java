@@ -47,4 +47,14 @@ public class ListPeople {
     public void setResults(List<People> results) {
         this.results = results;
     }
+
+    @Override
+    public String toString() {
+        return "ListPeople{" +
+                "count=" + count +
+                ", next=" + next +
+                ", previous=" + previous +
+                ", results=" + results +
+                '}';
+    }
 }
