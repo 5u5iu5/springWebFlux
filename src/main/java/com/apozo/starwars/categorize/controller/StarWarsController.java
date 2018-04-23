@@ -1,8 +1,6 @@
 package com.apozo.starwars.categorize.controller;
 
 import com.apozo.starwars.categorize.service.CategorizeService;
-import com.apozo.starwars.categorize.webclient.AppStarWarsClient;
-import com.apozo.starwars.categorize.payload.People;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +19,7 @@ public class StarWarsController {
     private static final Logger logger = LoggerFactory.getLogger(StarWarsController.class);
 
     @GetMapping("/start")
-    public Flux<People> start() {
+    public Flux<String> start() {
         return service.getPeopleFromStarWarsWorld();
     }
 

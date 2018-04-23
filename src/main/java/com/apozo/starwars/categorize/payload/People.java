@@ -1,110 +1,392 @@
-
 package com.apozo.starwars.categorize.payload;
 
-import java.util.HashMap;
+import java.net.URI;
+import java.util.Date;
 import java.util.List;
-import java.util.Map;
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({
-    "$schema",
-    "title",
-    "description",
-    "properties",
-    "required",
-    "type"
-})
-public class People {
+public class People{
+    /**
+     * The eye color of this person.
+     * (Required)
+     *
+     */
+    private String eyeColor;
+    /**
+     * The mass of this person in kilograms.
+     * (Required)
+     *
+     */
+    private String mass;
+    /**
+     * An array of urls of film resources that this person has been in.
+     * (Required)
+     *
+     */
+    private List<Object> films = null;
+    /**
+     * The url of the species resource that this person is.
+     * (Required)
+     *
+     */
+    private List<Object> species = null;
+    /**
+     * The birth year of this person. BBY (Before the Battle of Yavin) or ABY (After the Battle of Yavin).
+     * (Required)
+     *
+     */
+    private String birthYear;
+    /**
+     * The url of the planet resource that this person was born on.
+     * (Required)
+     *
+     */
+    private String homeworld;
+    /**
+     * the ISO 8601 date format of the time that this resource was edited.
+     * (Required)
+     *
+     */
+    private Date edited;
+    /**
+     * An array of starship resources that this person has piloted
+     * (Required)
+     *
+     */
+    private List<Object> starships = null;
+    /**
+     * The name of this person.
+     * (Required)
+     *
+     */
+    private String name;
+    /**
+     * The ISO 8601 date format of the time that this resource was created.
+     * (Required)
+     *
+     */
+    private Date created;
+    /**
+     * The gender of this person (if known).
+     * (Required)
+     *
+     */
+    private String gender;
+    /**
+     * The url of this resource
+     * (Required)
+     *
+     */
+    private URI url;
+    /**
+     * An array of vehicle resources that this person has piloted
+     * (Required)
+     *
+     */
+    private List<Object> vehicles = null;
+    /**
+     * The skin color of this person.
+     * (Required)
+     *
+     */
+    private String skinColor;
+    /**
+     * The height of this person in meters.
+     * (Required)
+     *
+     */
+    private String height;
+    /**
+     * The hair color of this person.
+     * (Required)
+     *
+     */
+    private String hairColor;
 
-    @JsonProperty("$schema")
-    private String $schema;
-    @JsonProperty("title")
-    private String title;
-    @JsonProperty("description")
-    private String description;
-    @JsonProperty("properties")
-    private Properties properties;
-    @JsonProperty("required")
-    private List<String> required = null;
-    @JsonProperty("type")
-    private String type;
-    @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-
-    @JsonProperty("$schema")
-    public String get$schema() {
-        return $schema;
+    /**
+     * The eye color of this person.
+     * (Required)
+     *
+     */
+    public String getEyeColor() {
+        return eyeColor;
     }
 
-    @JsonProperty("$schema")
-    public void set$schema(String $schema) {
-        this.$schema = $schema;
+    /**
+     * The eye color of this person.
+     * (Required)
+     *
+     */
+    public void setEyeColor(String eyeColor) {
+        this.eyeColor = eyeColor;
     }
 
-    @JsonProperty("title")
-    public String getTitle() {
-        return title;
+    /**
+     * The mass of this person in kilograms.
+     * (Required)
+     *
+     */
+    public String getMass() {
+        return mass;
     }
 
-    @JsonProperty("title")
-    public void setTitle(String title) {
-        this.title = title;
+    /**
+     * The mass of this person in kilograms.
+     * (Required)
+     *
+     */
+    public void setMass(String mass) {
+        this.mass = mass;
     }
 
-    @JsonProperty("description")
-    public String getDescription() {
-        return description;
+    /**
+     * An array of urls of film resources that this person has been in.
+     * (Required)
+     *
+     */
+    public List<Object> getFilms() {
+        return films;
     }
 
-    @JsonProperty("description")
-    public void setDescription(String description) {
-        this.description = description;
+    /**
+     * An array of urls of film resources that this person has been in.
+     * (Required)
+     *
+     */
+    public void setFilms(List<Object> films) {
+        this.films = films;
     }
 
-    @JsonProperty("properties")
-    public Properties getProperties() {
-        return properties;
+    /**
+     * The url of the species resource that this person is.
+     * (Required)
+     *
+     */
+    public List<Object> getSpecies() {
+        return species;
     }
 
-    @JsonProperty("properties")
-    public void setProperties(Properties properties) {
-        this.properties = properties;
+    /**
+     * The url of the species resource that this person is.
+     * (Required)
+     *
+     */
+    public void setSpecies(List<Object> species) {
+        this.species = species;
     }
 
-    @JsonProperty("required")
-    public List<String> getRequired() {
-        return required;
+    /**
+     * The birth year of this person. BBY (Before the Battle of Yavin) or ABY (After the Battle of Yavin).
+     * (Required)
+     *
+     */
+    public String getBirthYear() {
+        return birthYear;
     }
 
-    @JsonProperty("required")
-    public void setRequired(List<String> required) {
-        this.required = required;
+    /**
+     * The birth year of this person. BBY (Before the Battle of Yavin) or ABY (After the Battle of Yavin).
+     * (Required)
+     *
+     */
+    public void setBirthYear(String birthYear) {
+        this.birthYear = birthYear;
     }
 
-    @JsonProperty("type")
-    public String getType() {
-        return type;
+    /**
+     * The url of the planet resource that this person was born on.
+     * (Required)
+     *
+     */
+    public String getHomeworld() {
+        return homeworld;
     }
 
-    @JsonProperty("type")
-    public void setType(String type) {
-        this.type = type;
+    /**
+     * The url of the planet resource that this person was born on.
+     * (Required)
+     *
+     */
+    public void setHomeworld(String homeworld) {
+        this.homeworld = homeworld;
     }
 
-    @JsonAnyGetter
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
+    /**
+     * the ISO 8601 date format of the time that this resource was edited.
+     * (Required)
+     *
+     */
+    public Date getEdited() {
+        return edited;
     }
 
-    @JsonAnySetter
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
+    /**
+     * the ISO 8601 date format of the time that this resource was edited.
+     * (Required)
+     *
+     */
+    public void setEdited(Date edited) {
+        this.edited = edited;
     }
 
+    /**
+     * An array of starship resources that this person has piloted
+     * (Required)
+     *
+     */
+    public List<Object> getStarships() {
+        return starships;
+    }
+
+    /**
+     * An array of starship resources that this person has piloted
+     * (Required)
+     *
+     */
+    public void setStarships(List<Object> starships) {
+        this.starships = starships;
+    }
+
+    /**
+     * The name of this person.
+     * (Required)
+     *
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * The name of this person.
+     * (Required)
+     *
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * The ISO 8601 date format of the time that this resource was created.
+     * (Required)
+     *
+     */
+    public Date getCreated() {
+        return created;
+    }
+
+    /**
+     * The ISO 8601 date format of the time that this resource was created.
+     * (Required)
+     *
+     */
+    public void setCreated(Date created) {
+        this.created = created;
+    }
+
+    /**
+     * The gender of this person (if known).
+     * (Required)
+     *
+     */
+    public String getGender() {
+        return gender;
+    }
+
+    /**
+     * The gender of this person (if known).
+     * (Required)
+     *
+     */
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    /**
+     * The url of this resource
+     * (Required)
+     *
+     */
+    public URI getUrl() {
+        return url;
+    }
+
+    /**
+     * The url of this resource
+     * (Required)
+     *
+     */
+    public void setUrl(URI url) {
+        this.url = url;
+    }
+
+    /**
+     * An array of vehicle resources that this person has piloted
+     * (Required)
+     *
+     */
+    public List<Object> getVehicles() {
+        return vehicles;
+    }
+
+    /**
+     * An array of vehicle resources that this person has piloted
+     * (Required)
+     *
+     */
+    public void setVehicles(List<Object> vehicles) {
+        this.vehicles = vehicles;
+    }
+
+    /**
+     * The skin color of this person.
+     * (Required)
+     *
+     */
+    public String getSkinColor() {
+        return skinColor;
+    }
+
+    /**
+     * The skin color of this person.
+     * (Required)
+     *
+     */
+    public void setSkinColor(String skinColor) {
+        this.skinColor = skinColor;
+    }
+
+    /**
+     * The height of this person in meters.
+     * (Required)
+     *
+     */
+    public String getHeight() {
+        return height;
+    }
+
+    /**
+     * The height of this person in meters.
+     * (Required)
+     *
+     */
+    public void setHeight(String height) {
+        this.height = height;
+    }
+
+    /**
+     * The hair color of this person.
+     * (Required)
+     *
+     */
+    public String getHairColor() {
+        return hairColor;
+    }
+
+    /**
+     * The hair color of this person.
+     * (Required)
+     *
+     */
+    public void setHairColor(String hairColor) {
+        this.hairColor = hairColor;
+    }
 }
