@@ -4,8 +4,8 @@ logging:
     org.springframework.web: DEBUG
 
 starwars:
-  uri: https://swapi.co
-  endpoint: /api/people
+  uri: "https://swapi.co"
+  endpoint: "/api/people/"
 
 kafka:
   host: localhost:9092

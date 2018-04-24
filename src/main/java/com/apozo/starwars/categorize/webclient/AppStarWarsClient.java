@@ -24,22 +24,30 @@ public class AppStarWarsClient {
 
     private String people;
 
+    private ApplicationConfig appProperties;
+
     @Autowired
     public AppStarWarsClient(ApplicationConfig appProperties) {
+        this.appProperties = appProperties;
         this.webClient = WebClient
                 .builder()
-                .baseUrl("https://swapi.co")
+                .baseUrl(this.appProperties.getUri())
                 .defaultHeader(HttpHeaders.CONTENT_TYPE, "application/json")
                 .filter(logRequest())
                 .build();
     }
 
 
-    public Flux<ListPeople> listPeopleFromStarWars() {
+    public Flux<ListPeople> listPeopleFromStarWars(final String page) {
         return webClient.get()
-                .uri("/api/people/")
+                .uri(appProperties.getEndpoint() + page)
                 .exchange()
                 .flatMapMany(clientResponse -> clientResponse.bodyToFlux(ListPeople.class));
+    }
+
+    public Flux<ListPeople> listPeopleFromStarWars() {
+        Flux<ListPeople> listPeopleFlux = listPeopleFromStarWars("");
+        return listPeopleFlux;
     }
 
 
