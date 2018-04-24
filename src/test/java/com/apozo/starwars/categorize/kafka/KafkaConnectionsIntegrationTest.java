@@ -49,10 +49,10 @@ public class KafkaConnectionsIntegrationTest {
         Thread.sleep(1000); // wait a bit for the container to start
         KafkaTemplate<Integer, String> template = createTemplate();
         template.setDefaultTopic("jedis");
-        template.sendDefault(0, "foo");
-        template.sendDefault(2, "bar");
-        template.sendDefault(0, "baz");
-        template.sendDefault(2, "qux");
+        template.sendDefault(0, "sadasd");
+        template.sendDefault(2, "dsadasdas");
+        template.sendDefault(0, "Perdasdadara");
+        template.sendDefault(2, "Cedasdadadarda");
         template.flush();
         assertTrue(latch.await(60, TimeUnit.SECONDS));
         container.stop();
