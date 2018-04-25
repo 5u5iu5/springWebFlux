@@ -1,13 +1,14 @@
 package com.apozo.starwars.categorize.controller;
 
-import com.apozo.starwars.categorize.payload.ListPeople;
-import com.apozo.starwars.categorize.payload.People;
 import com.apozo.starwars.categorize.service.CategorizeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
 import reactor.core.publisher.Flux;
 
