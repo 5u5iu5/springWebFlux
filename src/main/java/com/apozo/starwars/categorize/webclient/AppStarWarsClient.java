@@ -14,6 +14,8 @@ import reactor.core.publisher.Flux;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.IntStream;
 
 /**
  * Created by rajeevkumarsingh on 10/11/17.
@@ -41,23 +43,18 @@ public class AppStarWarsClient {
                 .build();
     }
 
-
-    private Flux<ListPeople> listPeopleFromStarWars(final String page) {
-        return webClient.get()
-                .uri(appProperties.getEndpoint())
-                .exchange()
-                .flatMapMany(clientResponse -> clientResponse.bodyToFlux(ListPeople.class));
-    }
-
     public Flux<ListPeople> listPeopleFromStarWars() {
-        Flux<ListPeople> listPeopleFlux = listPeopleFromStarWars("");
-        Flux<ListPeople> listPeopleFlux1 = listPeopleFlux.flatMap(i -> webClient.get()
-                .uri("/api/people/?page={page}", i.getNext().toString().split("\\?")[1].replace("page=", ""))
-                .retrieve()
-                .bodyToMono(ListPeople.class), 1);
+        Flux<ListPeople> listPeopleFlux = Flux.fromStream(IntStream.iterate(0, i -> i + 1)
+                .boxed())
+                .flatMap(i -> webClient.get()
+                        .uri(i == 0 ? appProperties.getEndpoint() : appProperties.getEndpoint() + "?page={page}", i)
+                        .retrieve()
+                        .bodyToMono(ListPeople.class), 1)
+                .takeUntil(l -> l.getNext() == null);
+        //.flatMapIterable(ListPeople::getResults);
 
 
-        return listPeopleFlux1;
+        return listPeopleFlux;
     }
 
 

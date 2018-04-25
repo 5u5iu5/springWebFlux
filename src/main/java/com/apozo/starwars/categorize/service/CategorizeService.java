@@ -25,15 +25,14 @@ public class CategorizeService {
     @Autowired
     private KafkaPublisher kafkaPublisher;
 
-    public Flux<ListPeople> getPeopleFromStarWarsWorld() {
+    public Flux<String> getPeopleFromStarWarsWorld() {
         Flux<ListPeople> peopleFlux = starWarsClient.listPeopleFromStarWars();
-        Flux<ListPeople> listPeopleFlux = peopleFlux.doOnNext(p -> categorizeAndSendToKafka(p));
+        Flux<String> map = peopleFlux.map(p -> categorizeAndSendToKafka(p));
 
-        return listPeopleFlux;
+        return map;
     }
 
     private String categorizeAndSendToKafka(ListPeople p) {
-        p.toString();
         if (p != null) {
             return categorizePeople(p);
         } else
