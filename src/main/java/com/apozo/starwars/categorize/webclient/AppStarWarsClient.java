@@ -17,10 +17,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.IntStream;
 
-/**
- * Created by rajeevkumarsingh on 10/11/17.
- */
-
 @Service
 public class AppStarWarsClient {
 
